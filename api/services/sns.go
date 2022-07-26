@@ -1,6 +1,7 @@
 package service
 
 import (
+	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sns"
 )
@@ -14,8 +15,8 @@ type SnsService struct {
 	Arn string
 }
 
-func NewSnsService(arn string) (*SnsService, error) {
-	currentSession, err := session.NewSessionWithOptions(session.Options{SharedConfigState: session.SharedConfigEnable})
+func NewSnsService(arn string, region string) (*SnsService, error) {
+	currentSession, err := session.NewSessionWithOptions(session.Options{Config: aws.Config{Region: &region}})
 	if err != nil {
 		return nil, err
 	}

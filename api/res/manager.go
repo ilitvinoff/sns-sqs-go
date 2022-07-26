@@ -10,6 +10,6 @@ type ApiManager struct {
 	SnsService service.SnsHandler
 }
 
-func NewApiService(logger *log.Logger, snsHandler service.SnsHandler) *ApiManager {
+func NewApiManager(logger *log.Logger, snsHandler service.SnsHandler) *ApiManager {
 	return &ApiManager{logger, snsHandler}
 }
