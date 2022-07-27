@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	err := godotenv.Load("api/.env")
+	err := godotenv.Load()
 	if err != nil {
 		log.Println(fmt.Sprintf("ERROR: can't load .env {%s}", err))
 		return
