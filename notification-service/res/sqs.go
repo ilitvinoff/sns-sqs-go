@@ -34,6 +34,7 @@ func (m *ApiManager) HandleMessage() {
 				continue
 			}
 
+			// Here must be some external service
 			m.Logger.Println(msg)
 		}
 
