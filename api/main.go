@@ -6,7 +6,7 @@ import (
 	"github.com/joho/godotenv"
 	"log"
 	"sns-sqs/api/res"
-	svc "sns-sqs/api/services"
+	svc "sns-sqs/common/services"
 )
 
 func main() {

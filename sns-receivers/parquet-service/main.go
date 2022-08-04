@@ -6,8 +6,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/joho/godotenv"
 	"log"
-	"sns-sqs/notification-service/res"
-	service "sns-sqs/notification-service/services"
+	service "sns-sqs/common/services"
+	"sns-sqs/sns-receivers/parquet-service/res"
 )
 
 func main() {
@@ -37,7 +37,9 @@ func main() {
 
 	ddbSvc := service.NewDynamoDbService(sess, cfg.DynamoDbName)
 
-	svcManager := res.NewApiManager(log.Default(), sqsSvc, ddbSvc)
+	s3Svc := service.NewS3ParquetService(cfg.Bucket)
+
+	svcManager := res.NewManager(log.Default(), sqsSvc, ddbSvc, s3Svc)
 
 	for {
 		svcManager.HandleMessage()

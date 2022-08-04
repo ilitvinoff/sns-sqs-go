@@ -2,7 +2,7 @@ package res
 
 import (
 	"log"
-	service "sns-sqs/api/services"
+	service "sns-sqs/common/services"
 )
 
 type ApiManager struct {

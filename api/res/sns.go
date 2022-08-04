@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"sns-sqs/api/models"
+	"sns-sqs/common/models"
 )
 
 func (m *ApiManager) Publish(c *gin.Context) {

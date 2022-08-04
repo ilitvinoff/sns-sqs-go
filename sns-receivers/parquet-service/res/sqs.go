@@ -1,9 +1,10 @@
 package res
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
-	"sns-sqs/notification-service/models"
+	"sns-sqs/common/models"
 )
 
 func (m *ApiManager) HandleMessage() {
@@ -34,8 +35,7 @@ func (m *ApiManager) HandleMessage() {
 				continue
 			}
 
-			// Here must be some external service
-			m.Logger.Println(msg)
+			m.S3ParquetService.WriteToKey(context.Background(), msg)
 		}
 
 		_, err = m.SqsService.DeleteMessage(unit.ReceiptHandle)
